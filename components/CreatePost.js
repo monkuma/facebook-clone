@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { addPost } from "../public/src/features/postSlice";
 
 const CreatePost = () => {
-  const FACEBOOK_CLONE_ENDPOINT = "";
+  const FACEBOOK_CLONE_ENDPOINT = "http://localhost:8080/api/v1/post";
   const { data: session } = useSession();
   const inputRef = useRef(null);
   const hiddenFileInput = useRef(null);
@@ -72,18 +72,20 @@ const CreatePost = () => {
             className="rounded-full h-12 flex-grow focus:outline-none font-medium bg-gray-100 px-4"
             type="text"
             ref={inputRef}
-            placeholder={`What's on your mind, ${session.user.name}?`}
+            placeholder={`What's on your mind, ${session?.user.name}?`}
           ></input>
-          <button hidden onClick={handleSubmit}></button>
+          <button hidden onClick={handleSubmit}>
+            Submit
+          </button>
         </form>
       </div>
       {imageToPost && (
-        <div className="flex items-center px-4 py-2 space-x-4 filter hover:brightness-110 transition duration-150">
+        <div
+          onClick={removeImage}
+          className="flex items-center px-4 py-2 space-x-4 filter hover:brightness-110 transition duration-150"
+        >
           <img src={imageToPost} className="h-10 object-contain" />
-          <RiDeleteBin6Line
-            onClick={removeImage}
-            className="h-8 hover:text-red-500"
-          />
+          <RiDeleteBin6Line className="h-8 hover:text-red-500" />
         </div>
       )}
 
