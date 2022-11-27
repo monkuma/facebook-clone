@@ -3,6 +3,7 @@ import Head from "next/head";
 import Feed from "../components/Feed";
 import Header from "../components/Header";
 import Login from "../components/Login";
+import RightSidebar from "../components/RightSidebar";
 import SideBar from "../components/SideBar";
 
 export default function Home({ session }) {
@@ -21,6 +22,7 @@ export default function Home({ session }) {
         {/* Feed (Create Post and Posts) */}
         <Feed />
         {/* Right Sidebar */}
+        <RightSidebar />
       </main>
     </div>
   );
